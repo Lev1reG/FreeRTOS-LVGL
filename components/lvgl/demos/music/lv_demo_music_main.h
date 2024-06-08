@@ -14,12 +14,7 @@ extern "C" {
  *      INCLUDES
  *********************/
 #include "lv_demo_music.h"
-
 #if LV_USE_DEMO_MUSIC
-
-#if LV_USE_GRID == 0
-#error "LV_USE_GRID needs to be enabled"
-#endif
 
 /*********************
  *      DEFINES
@@ -42,6 +37,7 @@ void _lv_demo_music_album_next(bool next);
  *      MACROS
  **********************/
 #endif /*LV_USE_DEMO_MUSIC*/
+
 
 #ifdef __cplusplus
 } /* extern "C" */
