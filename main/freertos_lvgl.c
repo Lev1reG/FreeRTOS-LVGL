@@ -29,7 +29,8 @@ void update_sensor_data_label(float temperature, float humidity);
 void app_main() {
   // Create FreeRTOS tasks
   xTaskCreate(&read_dht22_task, "read_dht_task", 4096 * 2, NULL, 5, NULL);
-  xTaskCreate(&update_display_task, "update_display_task", 4096 * 2, NULL, 5, NULL);
+  xTaskCreate(&update_display_task, "update_display_task", 4096 * 2, NULL, 5,
+              NULL);
 }
 
 void read_dht22_task(void *pvParameters) {
@@ -71,8 +72,8 @@ void update_display_task(void *pvParameter) {
   // Initialize display driver
   static lv_disp_drv_t disp_drv;
   lv_disp_drv_init(&disp_drv);
-  disp_drv.hor_res = 240;
-  disp_drv.ver_res = 320;
+  disp_drv.hor_res = 320;
+  disp_drv.ver_res = 240;
   disp_drv.flush_cb = disp_driver_flush;
   disp_drv.draw_buf = &draw_buf;
   lv_disp_drv_register(&disp_drv);
@@ -106,7 +107,7 @@ static void lv_tick_task(void *arg) {
 
 void update_sensor_data_label(float temperature, float humidity) {
   char text[50];
-  snprintf(text, sizeof(text), "Temperature: %.1f °C\nHumidity: %.1f %%",
+  snprintf(text, sizeof(text), "Temperature: %.1f C\nHumidity: %.1f %%",
            temperature, humidity);
   lv_label_set_text(sensor_data_label, text);
 }
