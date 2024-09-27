@@ -1,5 +1,0 @@
-## IDF Component Manager Manifest File
-dependencies:
-  suda-morris/am2302_rmt:
-    version: '^1'
-    override_path: '../../../'
